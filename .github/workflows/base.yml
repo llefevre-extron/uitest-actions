@@ -23,7 +23,7 @@ jobs:
     runs-on: [ self-hosted, win10 ]
     
     env:
-      test-results-dir: TestResults
+      Test_Results_Dir: TestResults
 
     steps:
       - uses: actions/checkout@v3
@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: ${{ env:test-results-dir }}
+          path: $env:Test_Results_Dir
         if: ${{ always() }} # Always run this step to publish test results even when there are test failures
