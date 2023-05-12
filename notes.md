@@ -8,6 +8,10 @@
   - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency
   - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobs
 - Pass runsettings file to dotnet test.
+- Fix Test_Results_Dir env variable.
+- Reuse workflows.
+  - https://docs.github.com/en/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
+- Create nightly workflow for each category.
 
 ## Benefits
 - Sends emails automatically (configurable).
