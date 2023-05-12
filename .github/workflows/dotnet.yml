@@ -16,13 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      
-    # TODO: Verify .NET is installed with correct version.  
-      
-    # NuGet authentication required here?
+
     - name: Restore dependencies
       run: dotnet restore
-      
+
     - name: Build
       run: dotnet build --no-restore
       

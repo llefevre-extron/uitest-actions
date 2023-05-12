@@ -13,4 +13,14 @@
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Message Text="Retrieving VCS build files for $(ProjectName)" Importance="high" />
+    <Exec Command="$(SolutionDir)\Scripts\PullLatest.bat" WorkingDirectory="$(TargetDir)" />
+  </Target>
+
+  <Target Name="PostClean" AfterTargets="Clean">
+    <Message Text="Removing VCS build files for $(ProjectName)" Importance="high" />
+    <RemoveDir Directories="$(TargetDir)VCS;$(TargetDir)TestData" />
+  </Target>
 </Project>

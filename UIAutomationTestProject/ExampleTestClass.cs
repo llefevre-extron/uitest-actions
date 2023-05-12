@@ -9,40 +9,25 @@ namespace UIAutomationTestProject;
 public class ExampleTestClass
 {
     [TestMethod]
-    public void ExampleTestMethod()
+    public void VerifyWindowTitle()
     {
         // Open application and get main window.
-        var application = Application.Launch("notepad.exe");
+        var application = Application.Launch(@"VCS\VCS.exe");
         var mainWindow = application.GetMainWindow(new UIA3Automation());
+        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
 
-        // Find text editor and get value pattern.
-        var textEditor = mainWindow.FindFirstDescendant(factory => factory.ByAutomationId("15"));
-        var pattern = textEditor.Patterns.Value.Pattern;
-
-        // Set value of text editor.
-        pattern.SetValue("testing");
+        // Verify window title is as expected.
+        const string EXPECTED_TITLE = "Extron VCS - Quantum Ultra / Quantum Ultra II - NewProject <administrator>";
+        Assert.AreEqual(EXPECTED_TITLE, mainWindow.Title);
 
         // Create images directory and take screenshot
         var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent!.Parent!.Parent!.Parent!;
-        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
+        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(1));
         Directory.CreateDirectory(Path.Combine(dir.FullName, "Images"));
-        textEditor.CaptureToFile($"{dir.FullName}/Images/TempImage.png");
-        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
+        mainWindow.CaptureToFile($"{dir.FullName}/Images/MainWindow.png");
+        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(1));
 
-        // Verify text content is as expected.
-        Assert.AreEqual("testing", pattern.Value);
-
-        // Close application.
+        // Close the application.
         application.Close();
-    }
-
-    [TestMethod]
-    public void ScreenshotDesktop()
-    {
-        var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent!.Parent!.Parent!.Parent!;
-        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
-        Directory.CreateDirectory(Path.Combine(dir.FullName, "Images"));
-        new UIA3Automation().GetDesktop().CaptureToFile($"{dir.FullName}/Images/DesktopImage.png");
-        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
     }
 }
