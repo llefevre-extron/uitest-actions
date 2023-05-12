@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FlaUI.Core;
 using FlaUI.Core.Input;
 using FlaUI.UIA3;
@@ -11,8 +12,14 @@ public class ExampleTestClass
     [TestMethod]
     public void VerifyWindowTitle()
     {
+        var processInfo = new ProcessStartInfo
+        {
+            FileName = @"VCS\VCS.exe",
+            UseShellExecute = true
+        };
+
         // Open application and get main window.
-        var application = Application.Launch(@"VCS\VCS.exe");
+        var application = Application.Launch(processInfo);
         var mainWindow = application.GetMainWindow(new UIA3Automation());
         Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
 
