@@ -1,11 +1,8 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: OnChange
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master" ] # Temp - remove this
   pull_request:
     branches: [ "master" ]
 
@@ -22,7 +19,7 @@ jobs:
 
     - name: Build
       run: dotnet build --no-restore
-      
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
 

@@ -1,0 +1,19 @@
+name: Master Merge
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: [ self-hosted, win10 ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
