@@ -26,3 +26,41 @@
 - Workflows and code all sit in the same place (GitHub).
 - Queues jobs automatically.
 - Can skip workflow runs and automatically not run job if certain conditions arent satisifed (e.g. no .cs files were changed).
+
+
+## Structure
+- Review Change / Nightly
+  - Windows 10
+    - MGP Tests
+      - Connection Tests
+      - Wall Configuration Tests
+      - Source Configuration Tests
+      - Preset Configuration Tests
+      - EDID Minder Tests
+      - Device Settings Tests
+      - Application Menu Tests
+    - Quantum Tests
+      - Connection Tests
+      - Wall Configuration Tests
+      - Source Configuration Tests
+      - Preset Configuration Tests
+      - EDID Minder Tests
+      - Device Settings Tests
+      - Application Menu Tests
+  - Windows 11
+    - MGP Tests
+      - Connection Tests
+      - Wall Configuration Tests
+      - Source Configuration Tests
+      - Preset Configuration Tests
+      - EDID Minder Tests
+      - Device Settings Tests
+      - Application Menu Tests
+    - Quantum Tests
+      - Connection Tests
+      - Wall Configuration Tests
+      - Source Configuration Tests
+      - Preset Configuration Tests
+      - EDID Minder Tests
+      - Device Settings Tests
+      - Application Menu Tests
