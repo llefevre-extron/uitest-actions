@@ -10,14 +10,22 @@ on:
       - '**.csproj'
 
 jobs:
-  quantum-build:
+  category_matrix:
+    strategy:
+      matrix:
+        category: [ 'MGP', 'Quantum' ]
     uses: ./.github/workflows/base.yml
-    name: Quantum Tests
     with:
-      test-filter: TestCategory=Quantum
+      build-name: ${{ matrix.version }}
+      test-filter: TestCategory=${{ matrix.version }}
 
-  mgp-build:
-    uses: ./.github/workflows/base.yml
-    name: MGP Tests
-    with:
-      test-filter: TestCategory=MGP
+#  quantum-build:
+#    name: Quantum Tests
+    
+
+#  mgp-build:
+#    uses: ./.github/workflows/base.yml
+#    name: MGP Tests
+#    with:
+#      build-name: 
+#      test-filter: TestCategory=MGP
