@@ -57,7 +57,7 @@ jobs:
     
     connection:
       name: Connection
-      if: ${{ inputs.connection }} == true
+      if: ${{ inputs.connection == true }} 
       uses: ./.github/workflows/base.yml
       with:
         build-name: Connection
@@ -65,7 +65,7 @@ jobs:
         
     wall-configuration:
       name: Wall Configuration
-      if: ${{ inputs.wall-configuration }} == true
+      if: ${{ inputs.wall-configuration == true }} 
       uses: ./.github/workflows/base.yml
       with:
         build-name: Wall Configuration
