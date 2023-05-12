@@ -44,19 +44,19 @@ on:
 
 jobs:
     connection:
-      name: Connection 1
+      name: Connection
       if: ${{ inputs.connection == true }} 
       uses: ./.github/workflows/base.yml
       with:
-        build-name: Connection 2
+        build-name: ${{ github.job.name }}
         test-filter: TestCategory=Connection
         
     wall-configuration:
-      name: Wall Configuration 1
+      name: Wall Configuration
       if: ${{ inputs.wall-configuration == true }} 
       uses: ./.github/workflows/base.yml
       with:
-        build-name: Wall Configuration 2
+        build-name: ${{ github.job.name }}
         test-filter: TestCategory=WallConfiguration
         
         

@@ -18,7 +18,7 @@ on:
 jobs:
   build:
     
-    name: ${{ github.job.name }}  #${{ inputs.build-name }}
+    name: ${{ inputs.build-name }}
 
     runs-on: [ self-hosted, win10 ]
     

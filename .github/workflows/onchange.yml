@@ -1,6 +1,7 @@
 name: OnChange
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "master" ] # Temp - remove this
   pull_request:
