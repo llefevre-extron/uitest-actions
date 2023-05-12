@@ -35,4 +35,14 @@ public class ExampleTestClass
         // Close application.
         application.Close();
     }
+
+    [TestMethod]
+    public void ScreenshotDesktop()
+    {
+        var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent!.Parent!.Parent!.Parent!;
+        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
+        Directory.CreateDirectory(Path.Combine(dir.FullName, "Images"));
+        new UIA3Automation().GetDesktop().CaptureToFile($"{dir.FullName}/Images/DesktopImage.png");
+        Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
+    }
 }
