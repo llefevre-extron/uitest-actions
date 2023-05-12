@@ -8,9 +8,10 @@ on:
       platform:
         description: 'Platform'
         required: true
-        default: 'Windows 10'
+        default: 'All'
         type: choice
         options:
+          - All
           - Windows 10
           - Windows 11
       filter:
