@@ -12,10 +12,12 @@ on:
 jobs:
   quantum-build:
     uses: ./.github/workflows/base.yml
+    name: Quantum Tests
     with:
       test-filter: TestCategory=Quantum
 
   mgp-build:
     uses: ./.github/workflows/base.yml
+    name: MGP Tests
     with:
       test-filter: TestCategory=MGP
