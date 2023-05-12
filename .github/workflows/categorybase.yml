@@ -3,8 +3,8 @@
 name: Category Base
 
 on:
-  workflow_dispatch:
   workflow_call:
+  workflow_dispatch:
     inputs:
       connection:
         description: 'Run the Connection test category'
@@ -49,7 +49,7 @@ jobs:
       if: ${{ inputs.connection == true }} 
       uses: ./.github/workflows/base.yml
       with:
-        build-name: ${{ github.job.name }}
+        build-name: Connection
         test-filter: TestCategory=Connection
         
     wall-configuration:
@@ -57,7 +57,7 @@ jobs:
       if: ${{ inputs.wall-configuration == true }} 
       uses: ./.github/workflows/base.yml
       with:
-        build-name: ${{ github.job.name }}
+        build-name: Wall Configuration
         test-filter: TestCategory=WallConfiguration
         
         
