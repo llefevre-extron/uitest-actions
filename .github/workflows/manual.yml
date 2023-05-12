@@ -1,0 +1,111 @@
+﻿# Runs the specified categories manually.
+
+name: Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      connection:
+        description: 'Connection Tests'
+        default: false
+        required: false
+        type: boolean
+      wall-configuration:
+        description: 'Wall Configuration Tests'
+        default: false
+        required: false
+        type: boolean
+      source-configuration:
+        description: 'Source Configuration Test'
+        default: false
+        required: false
+        type: boolean
+      preset-configuration:
+        description: 'Preset Configuration Tests'
+        default: false
+        required: false
+        type: boolean
+      edid-minder:
+        description: 'EDID Minder Tests'
+        default: false
+        required: false
+        type: boolean
+      device-settings:
+        description: 'Device Settings Tests'
+        default: false
+        required: false
+        type: boolean
+      app-menu:
+        description: 'Application Menu Tests'
+        default: false
+        required: false
+        type: boolean
+      logLevel:
+        description: 'Platform'
+        required: true
+        default: 'Windows 10'
+        type: choice
+        options:
+          - Windows 10
+          - Windows 11
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+
+jobs:
+  connection-build:
+    name: Connection
+    if: ${{ inputs.connection == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Connection
+      test-filter: TestCategory=Connection
+  
+  wall-configuration-build:
+    name: Wall Configuration
+    if: ${{ inputs.wall-configuration == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Wall Configuration
+      test-filter: TestCategory=WallConfiguration
+
+  source-configuration-build:
+    name: Source Configuration
+    if: ${{ inputs.source-configuration == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Source Configuration
+      test-filter: TestCategory=SourceConfiguration
+  
+  preset-configuration-build:
+    name: Preset Configuration
+    if: ${{ inputs.preset-configuration == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Preset Configuration
+      test-filter: TestCategory=PresetConfiguration
+  
+  edid-minder-build:
+    name: EDID Minder
+    if: ${{ inputs.edid-minder == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: EDID Minder
+      test-filter: TestCategory=EDIDMinder
+  
+  device-settings-build:
+    name: Device Settings
+    if: ${{ inputs.device-settings == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Device Settings
+      test-filter: TestCategory=DeviceSettings
+  
+  app-menu-build:
+    name: Application Menu
+    if: ${{ inputs.app-menu == true }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: Application Menu
+      test-filter: TestCategory=ApplicationMenu

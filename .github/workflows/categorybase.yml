@@ -4,7 +4,6 @@ name: Category Base
 
 on:
   workflow_call:
-  workflow_dispatch:
     inputs:
       connection:
         description: 'Run the Connection test category'
