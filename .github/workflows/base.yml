@@ -10,26 +10,30 @@ on:
         type: string
 
 jobs:
-  runs-on: [ self-hosted, win10 ]
-  
-  env:
-    Test_Results_Dir: TestResults
+  build:
+    
+    name: ${{ inputs.test-filter }}
 
-  steps:
-    - uses: actions/checkout@v3
+    runs-on: [ self-hosted, win10 ]
+    
+    env:
+      Test_Results_Dir: TestResults
 
-    - name: Restore Dependencies
-      run: dotnet restore
+    steps:
+      - uses: actions/checkout@v3
 
-    - name: Build Solution
-      run: dotnet build --no-restore
+      - name: Restore Dependencies
+        run: dotnet restore
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal --filter ${{ inputs.test-filter }}
+      - name: Build Solution
+        run: dotnet build --no-restore
 
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: $env:Test_Results_Dir
-      if: ${{ always() }} # Always run this step to publish test results even when there are test failures
+      - name: Test
+        run: dotnet test --no-build --verbosity normal --filter ${{ inputs.test-filter }}
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: $env:Test_Results_Dir
+        if: ${{ always() }} # Always run this step to publish test results even when there are test failures
