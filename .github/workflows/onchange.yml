@@ -16,8 +16,8 @@ jobs:
         category: [ 'MGP', 'Quantum' ]
     uses: ./.github/workflows/base.yml
     with:
-      build-name: ${{ matrix.version }}
-      test-filter: TestCategory=${{ matrix.version }}
+      build-name: ${{ matrix.category }}
+      test-filter: TestCategory=${{ matrix.category }}
 
 #  quantum-build:
 #    name: Quantum Tests
