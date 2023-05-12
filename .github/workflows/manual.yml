@@ -5,6 +5,14 @@ name: Manual
 on:
   workflow_dispatch:
     inputs:
+      platform:
+        description: 'Platform'
+        required: true
+        default: 'Windows 10'
+        type: choice
+        options:
+          - Windows 10
+          - Windows 11
       connection:
         description: 'Connection Tests'
         default: false
@@ -40,18 +48,6 @@ on:
         default: false
         required: false
         type: boolean
-      logLevel:
-        description: 'Platform'
-        required: true
-        default: 'Windows 10'
-        type: choice
-        options:
-          - Windows 10
-          - Windows 11
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
 
 jobs:
   connection-build:
