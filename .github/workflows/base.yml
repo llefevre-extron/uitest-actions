@@ -11,6 +11,8 @@ on:
 
 jobs:
   build:
+
+    runs-on: [ self-hosted, win10 ]
     
     env:
       Test_Results_Dir: TestResults
