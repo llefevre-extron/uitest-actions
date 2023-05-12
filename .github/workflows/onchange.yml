@@ -15,10 +15,7 @@ jobs:
       matrix:
         category: [ 'MGP', 'Quantum' ]
     name: ${{ matrix.category }} Tests
-    uses: ./.github/workflows/base.yml
-    with:
-      build-name: ${{ matrix.category }}
-      test-filter: TestCategory=${{ matrix.category }}
+    uses: ./.github/workflows/categorybase.yml
 
 #  quantum-build:
 #    name: Quantum Tests

@@ -1,0 +1,53 @@
+﻿name: Category Base
+
+on:
+  workflow_call:
+    inputs:
+      connection:
+        description: 'Run the Connection test category'
+        default: false
+        required: false
+        type: boolean
+      wall-configuration:
+        description: 'Run the Wall Configuration test category'
+        default: false
+        required: false
+        type: boolean
+      source-configuration:
+        description: 'Run the Source Configuration test category'
+        default: false
+        required: false
+        type: boolean
+      preset-configuration:
+        description: 'Run the Preset Configuration test category'
+        default: false
+        required: false
+        type: boolean
+      edid-minder:
+        description: 'Run the EDID Minder test category'
+        default: false
+        required: false
+        type: boolean
+      device-settings:
+        description: 'Run the Device Settings test category'
+        default: false
+        required: false
+        type: boolean
+      app-menu:
+        description: 'Run the Application Menu test category'
+        default: false
+        required: false
+        type: boolean
+
+
+jobs:
+  category_matrix:
+    strategy:
+      matrix:
+        category: [ 'Connection', 'Wall Configuration', 'Source Configuration', 'Preset Configuration', 'EDID Minder', 'Device Settings', 'ApplicationMenu' ]
+    name: ${{ matrix.category }}
+    uses: ./.github/workflows/base.yml
+    with:
+      build-name: ${{ matrix.category }}
+      test-filter: TestCategory=${{ matrix.category }}
+    
