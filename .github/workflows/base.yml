@@ -1,3 +1,5 @@
+# Runs a single job of the specified test category.
+
 name: Base
 
 on:
@@ -8,7 +10,7 @@ on:
         required: true
         type: string
       test-filter:
-        description: 'Test categories to run'
+        description: 'Test category to run'
         default: ""
         required: false
         type: string
@@ -21,7 +23,7 @@ jobs:
     runs-on: [ self-hosted, win10 ]
     
     env:
-      Test_Results_Dir: TestResults
+      test-results-dir: TestResults
 
     steps:
       - uses: actions/checkout@v3
@@ -33,11 +35,11 @@ jobs:
         run: dotnet build --no-restore
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal --filter ${{ inputs.test-filter }}
+        run: dotnet test --no-build --verbosity normal --filter "${{ inputs.test-filter }}"
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: $env:Test_Results_Dir
+          path: ${{ env:test-results-dir }}
         if: ${{ always() }} # Always run this step to publish test results even when there are test failures

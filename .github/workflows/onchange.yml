@@ -12,18 +12,10 @@ on:
 jobs:
   category_matrix:
     strategy:
+      fail-fast: false
       matrix:
         category: [ 'MGP', 'Quantum' ]
     name: ${{ matrix.category }} Tests
     uses: ./.github/workflows/categorybase.yml
-
-#  quantum-build:
-#    name: Quantum Tests
-    
-
-#  mgp-build:
-#    uses: ./.github/workflows/base.yml
-#    name: MGP Tests
-#    with:
-#      build-name: 
-#      test-filter: TestCategory=MGP
+    with:
+      connection: true

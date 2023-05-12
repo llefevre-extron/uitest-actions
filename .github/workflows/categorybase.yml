@@ -1,4 +1,6 @@
-﻿name: Category Base
+﻿# Runs the specified categories for the given device.
+
+name: Category Base
 
 on:
   workflow_call:
@@ -41,13 +43,30 @@ on:
 
 
 jobs:
-  category_matrix:
-    strategy:
-      matrix:
-        category: [ 'Connection', 'Wall Configuration', 'Source Configuration', 'Preset Configuration', 'EDID Minder', 'Device Settings', 'ApplicationMenu' ]
-    name: ${{ matrix.category }}
-    uses: ./.github/workflows/base.yml
-    with:
-      build-name: ${{ matrix.category }}
-      test-filter: TestCategory=${{ matrix.category }}
+#  category_matrix:
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        category: [ 'Connection', 'WallConfiguration', 'SourceConfiguration', 'PresetConfiguration', 'EDIDMinder', 'DeviceSettings', 'ApplicationMenu' ]
+#    name: ${{ matrix.category }}
+#    uses: ./.github/workflows/base.yml
+#    with:
+#      build-name: ${{ matrix.category }}
+#      test-filter: TestCategory=${{ matrix.category }}
     
+    
+    connection:
+      name: Connection
+      if: ${{ inputs.connection }} == true
+      uses: ./.github/workflows/base.yml
+      with:
+        build-name: Connection
+        test-filter: TestCategory=Connection
+        
+    wall-configuration:
+      name: Wall Configuration
+      if: ${{ inputs.wall-configuration }} == true
+      uses: ./.github/workflows/base.yml
+      with:
+        build-name: Wall Configuration
+        test-filter: TestCategory=WallConfiguration
