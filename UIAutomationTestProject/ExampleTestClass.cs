@@ -9,6 +9,7 @@ namespace UIAutomationTestProject;
 [TestClass]
 public class ExampleTestClass
 {
+    [Ignore]
     [TestMethod]
     public void VerifyWindowTitle()
     {
@@ -36,5 +37,19 @@ public class ExampleTestClass
 
         // Close the application.
         application.Close();
+    }
+
+    [TestMethod]
+    [TestCategory("Quantum")]
+    public void MyQuantumTest()
+    {
+        Console.WriteLine("Running the Quantum test!");
+    }
+
+    [TestMethod]
+    [TestCategory("MGP")]
+    public void MyMGPTest()
+    {
+        Console.WriteLine("Running the MGP test!");
     }
 }
