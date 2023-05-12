@@ -16,7 +16,6 @@ jobs:
       test-filter: TestCategory=Quantum
 
   mgp-build:
-    runs-on: [ self-hosted, win10 ]
     uses: ./.github/workflows/base.yml
     with:
       test-filter: TestCategory=MGP
