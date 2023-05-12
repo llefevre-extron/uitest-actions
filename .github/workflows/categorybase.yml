@@ -3,6 +3,7 @@
 name: Category Base
 
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       connection:
