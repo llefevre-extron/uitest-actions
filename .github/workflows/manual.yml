@@ -13,6 +13,11 @@ on:
         options:
           - Windows 10
           - Windows 11
+      filter:
+        description: 'Custom test filter'
+        default: ''
+        required: false
+        type: string
       connection:
         description: 'Connection Tests'
         default: false

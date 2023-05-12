@@ -5,11 +5,6 @@ name: Category Base
 on:
   workflow_call:
     inputs:
-      filter:
-        description: 'Custom test filter'
-        default: ''
-        required: false
-        type: string
       connection:
         description: 'Run the Connection test category'
         default: false
