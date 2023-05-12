@@ -26,7 +26,7 @@ public class ExampleTestClass
         var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent!.Parent!.Parent!.Parent!;
         Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
         Directory.CreateDirectory(Path.Combine(dir.FullName, "Images"));
-        textEditor.CaptureToFile($"{dir.FullName}/TempImage.png");
+        textEditor.CaptureToFile($"{dir.FullName}/Images/TempImage.png");
         Wait.UntilInputIsProcessed(TimeSpan.FromSeconds(2));
 
         // Verify text content is as expected.
