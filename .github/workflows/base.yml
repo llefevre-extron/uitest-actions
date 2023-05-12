@@ -3,6 +3,10 @@ name: Base
 on:
   workflow_call:
     inputs:
+      build-name:
+        description: 'Name of the build being executed'
+        required: true
+        type: string
       test-filter:
         description: 'Test categories to run'
         default: ""
@@ -12,7 +16,7 @@ on:
 jobs:
   build:
     
-    name: ${{ inputs.test-filter }}
+    name: ${{ inputs.build-name }}
 
     runs-on: [ self-hosted, win10 ]
     
