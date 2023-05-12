@@ -43,6 +43,23 @@ on:
 
 
 jobs:
+    connection:
+      name: Connection 1
+      if: ${{ inputs.connection == true }} 
+      uses: ./.github/workflows/base.yml
+      with:
+        build-name: Connection 2
+        test-filter: TestCategory=Connection
+        
+    wall-configuration:
+      name: Wall Configuration 1
+      if: ${{ inputs.wall-configuration == true }} 
+      uses: ./.github/workflows/base.yml
+      with:
+        build-name: Wall Configuration 2
+        test-filter: TestCategory=WallConfiguration
+        
+        
 #  category_matrix:
 #    strategy:
 #      fail-fast: false
@@ -53,20 +70,3 @@ jobs:
 #    with:
 #      build-name: ${{ matrix.category }}
 #      test-filter: TestCategory=${{ matrix.category }}
-    
-    
-    connection:
-      name: Connection
-      if: ${{ inputs.connection == true }} 
-      uses: ./.github/workflows/base.yml
-      with:
-        build-name: Connection
-        test-filter: TestCategory=Connection
-        
-    wall-configuration:
-      name: Wall Configuration
-      if: ${{ inputs.wall-configuration == true }} 
-      uses: ./.github/workflows/base.yml
-      with:
-        build-name: Wall Configuration
-        test-filter: TestCategory=WallConfiguration
