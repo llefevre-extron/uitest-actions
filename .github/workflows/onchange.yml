@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         category: [ 'MGP', 'Quantum' ]
+    name: ${{ matrix.category }} Tests
     uses: ./.github/workflows/base.yml
     with:
       build-name: ${{ matrix.category }}
