@@ -1,0 +1,28 @@
+name: OnChange
+
+on:
+  push:
+    branches: [ "master" ] # Temp - remove this
+  pull_request:
+    branches: [ "master" ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
+
+jobs:
+  build:
+    name: My Review Build
+
+    runs-on: [ self-hosted, win10 ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build Solution
+        run: dotnet build --no-restore
+
+      - name: Run Tests
+        run: dotnet test --no-build --verbosity normal --filter Quantum
